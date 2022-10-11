@@ -34,8 +34,6 @@ int main(int argc, char **argv) {
             index += ((std::string)argv[3]).length();
         }
     }
-    
-
     outfile.open(argv[1] + (std::string) ".replace");
     outfile << text;
     outfile.close();
