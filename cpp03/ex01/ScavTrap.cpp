@@ -1,9 +1,9 @@
 #include "ScavTrap.hpp"
 
-/*ScavTrap::ScavTrap(void) : ClapTrap("", 100, 50, 20), _is_keeping(0) {
+ScavTrap::ScavTrap(void) : ClapTrap("", 100, 50, 20), _is_keeping(0) {
 	std::cout << "\033[0;34mScavTrap Default Constructor called\033[0m" << std::endl;
 	return ;
-}*/
+}
 
 ScavTrap::ScavTrap(const ScavTrap& other) {
 	std::cout << "\033[0;34mScavTrap Copy Constructor called\033[0m" << std::endl;
@@ -11,7 +11,7 @@ ScavTrap::ScavTrap(const ScavTrap& other) {
 	return ;
 }
 
-ScavTrap::ScavTrap(const std::string& name) : _name(name), _life(100), _energy(50), _attack(20) _is_keeping(0) {
+ScavTrap::ScavTrap(const std::string& name) : ClapTrap("", 100, 50, 20), _is_keeping(0) {
 	std::cout << "\033[0;34mScavTrap Constructor called\033[0m" << std::endl;
 }
 

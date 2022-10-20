@@ -15,11 +15,11 @@ ClapTrap::ClapTrap(const ClapTrap& other): _name(other.getName()), _life(other.g
 	return ;
 }
 
-/*ClapTrap::ClapTrap(const std::string& name, int life, int energy, int attack) : _name(name), _life(life), _energy(energy), _attack(attack)
+ClapTrap::ClapTrap(const std::string& name, int life, int energy, int attack) : _name(name), _life(life), _energy(energy), _attack(attack)
 {
 	std::cout << "\033[0;34mClapTrap constructor called\033[0m" << std::endl;
 	return ;
-}*/
+}
 
 ClapTrap::~ClapTrap() {
 	std::cout << "\033[0;34mDestructor called\033[0m" << std::endl;

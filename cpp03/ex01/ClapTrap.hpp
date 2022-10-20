@@ -31,7 +31,7 @@ class ClapTrap
 		void	beRepaired(unsigned int amount);
 
 	protected:
-		//ClapTrap(const std::string& name, int life, int energy, int attack);
+		ClapTrap(const std::string& name, int life, int energy, int attack);
 		
 		std::string		_name;
 		unsigned int	_life;
