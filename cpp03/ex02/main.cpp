@@ -1,11 +1,12 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
 int	main()
 {
-	ScavTrap	killer("Norbert");
+	FragTrap	killer("Zodiac");
 
-	killer.attack("Jeremy");
+	killer.attack("Jeffrey Dahmer");
 	std::cout << killer << std::endl;
 	killer.takeDamage(25);
 	std::cout << killer << std::endl;
@@ -16,11 +17,11 @@ int	main()
 	std::cout << killer << std::endl;
 	killer.beRepaired(40);
 	std::cout << killer << std::endl;
-	killer.attack("Ted Bundy");
-	killer.guardGate();
+	killer.attack("Richard Ramirez");
+	killer.highFiveGuys();
 	killer.takeDamage(8);
 	std::cout << killer << std::endl;
-	killer.attack("Richard Ramirez");
-	killer.guardGate();
+	killer.attack("Ted Bundy");
+	killer.highFiveGuys();
 	return (0);
 }

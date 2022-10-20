@@ -1,26 +1,28 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
+#include "FragTrap.hpp"
+#include "DiamondTrap.hpp"
 
 int	main()
 {
-	ScavTrap	killer("Norbert");
+	DiamondTrap	killer("Zodiac");
 
-	killer.attack("Jeremy");
+	killer.attack("John Wayne Gacy");
 	std::cout << killer << std::endl;
 	killer.takeDamage(25);
 	std::cout << killer << std::endl;
 	killer.takeDamage(18);
 	std::cout << killer << std::endl;
-	killer.attack("John Wayne Gacy");
-	killer.attack("Jack the Ripper");
+	killer.attack("Jeffrey Dahmer");
+	killer.attack("Harold Shipman");
 	std::cout << killer << std::endl;
 	killer.beRepaired(40);
-	std::cout << killer << std::endl;
-	killer.attack("Ted Bundy");
-	killer.guardGate();
-	killer.takeDamage(8);
+	killer.whoAmI();
 	std::cout << killer << std::endl;
 	killer.attack("Richard Ramirez");
-	killer.guardGate();
-	return (0);
+	killer.highFiveGuys();
+	killer.takeDamage(8);
+	std::cout << killer << std::endl;
+	killer.attack("Ted Bundy");
+	killer.highFiveGuys();
 }
