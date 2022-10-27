@@ -21,12 +21,12 @@ Animal::~Animal() {
     return ;
 }
 
-Animal& Animal::operator=(const Animal& other) {
-    std::cout << "Animal assignment operator called" << std::endl;
-    if (this != &other) {
-        this ->_type = other.getType();
-    }
-    return (*this);
+Animal&	Animal::operator=(const Animal& other)
+{
+	std::cout << "Animal assignment operator called." << std::endl;
+	if (this != &other)
+		this->_type = other.getType();
+	return (*this);
 }
 
 std::string Animal::getType() const {

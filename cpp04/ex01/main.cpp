@@ -1,40 +1,41 @@
-#include "Animal.hpp"
 #include "Dog.hpp"
 #include "Cat.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
 
 int	main()
 {
+	// {
+	// 	Cat	cat1;
+	// 	Cat cat2(cat1);
+	// 	Cat cat3;
+
+	// 	cat3 = cat1;
+	// }
+	// std::cout << std::endl;
 	{
-		const Animal*	animal = new Animal("Cow");
-		const Animal*	dog    = new Dog();
-		const Animal*	cat    = new Cat();
+		
+		Animal*	animal[6];
 
-		std::cout << "animal Type : " << animal->getType() 	<< std::endl;
-		std::cout << "animal Type : " << dog->getType() 	<< std::endl;
-		std::cout << "animal Type : " << cat->getType()    	<< std::endl;
-
-		animal->makeSound();
-		dog->makeSound();
-		cat->makeSound();
-
-		delete animal;
-		delete cat;
-		delete dog;
-	}
-	std::cout << std::endl;
-	{
-		const WrongAnimal*	wrong_animal = new WrongAnimal("wrongCow");
-		const WrongAnimal*	wrong_cat = new WrongCat();
-
-		std::cout << "wrong_animal getType : " << wrong_animal->getType() << std::endl;
-		std::cout << "wrong_cat getType : " << wrong_cat->getType() << std::endl;
-
-		wrong_animal->makeSound();
-		wrong_cat->makeSound();
-
-		delete wrong_animal;
-		delete wrong_cat;
+		for (int i = 0; i < 3; i++)
+		{
+			animal[i] = new Cat();
+			std::cout << std::endl;
+		}
+		for (int i = 3; i < 6; i++)
+		{
+			animal[i] = new Dog();
+			std::cout << std::endl;
+		}
+		for (int i = 0; i < 6; i++)
+		{
+			std::cout << "<< " << animal[i]->getType() << " >>" << std::endl;
+			animal[i]->makeSound();
+			animal[i]->thoughts();
+			std::cout << std::endl;
+		}
+		for (int i = 0; i < 6; i++)
+		{
+			delete animal[i];
+			std::cout << std::endl;
+		}
 	}
 }
