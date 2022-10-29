@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zchbani <zchbani@student.42.fr>            +#+  +:+       +#+        */
+/*   By: ysachiko <ysachiko@student.21-school.ru    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/20 10:49:30 by ysachiko          #+#    #+#             */
-/*   Updated: 2022/10/29 21:00:01 by zchbani          ###   ########.fr       */
+/*   Created: 2022/10/20 13:31:56 by ysachiko          #+#    #+#             */
+/*   Updated: 2022/10/20 13:32:01 by ysachiko         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,18 @@
 
 int main()
 {
-	try
-	{
-		Bureaucrat chip("Chip", 1);
-		std::cout << chip << std::endl;
-		chip.decrGrade();
+	try {
+		Form f1 = Form("M37", 10, 5);
+		Bureaucrat b1 = Bureaucrat("Ash", 30);
+		Bureaucrat b2 = Bureaucrat("Quad", 1);
+		
+		b1.signForm(f1);
+		b2.signForm(f1);
+		Form f2 = Form("C28", 0, 5);
+		std::cout << "no line" << std::endl;
 	}
-	catch (std::exception &e)
+	catch (std::exception & e) 
 	{
-		std::cout << e.what() << std::endl;
+		std::cout << "Exception: " << e.what() << std::endl;
 	}
 }

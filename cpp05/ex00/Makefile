@@ -1,8 +1,8 @@
 NAME		=	program
 
-SRCS		=	main.cpp Bureaucrat.cpp
+SRCS		=	main.cpp  Bureaucrat.cpp
 
-CC			=	g++
+CC			=	c++
 
 RM			=	rm
 
