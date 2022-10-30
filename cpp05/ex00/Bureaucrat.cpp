@@ -33,7 +33,7 @@ Bureaucrat & Bureaucrat::operator=(const Bureaucrat &src) {
 std::string Bureaucrat::getName() const {
 	return this->name;
 }
-
+   
 int Bureaucrat::getGrade() const {
 	return this->grade;
 }
