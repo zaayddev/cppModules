@@ -13,26 +13,26 @@ int	main()
 	// std::cout << std::endl;
 	{
 		
-		Animal*	animal[6];
+		Animal*	animal[100];
 
-		for (int i = 0; i < 3; i++)
+		for (int i = 0; i < 102; i++)
 		{
 			animal[i] = new Cat();
 			std::cout << std::endl;
 		}
-		for (int i = 3; i < 6; i++)
-		{
-			animal[i] = new Dog();
-			std::cout << std::endl;
-		}
-		for (int i = 0; i < 6; i++)
+		// for (int i = 3; i < 6; i++)
+		// {
+		// 	animal[i] = new Dog();
+		// 	std::cout << std::endl;
+		// }
+		for (int i = 0; i < 102; i++)
 		{
 			std::cout << "<< " << animal[i]->getType() << " >>" << std::endl;
 			animal[i]->makeSound();
 			animal[i]->thoughts();
 			std::cout << std::endl;
 		}
-		for (int i = 0; i < 6; i++)
+		for (int i = 0; i < 102; i++)
 		{
 			delete animal[i];
 			std::cout << std::endl;
