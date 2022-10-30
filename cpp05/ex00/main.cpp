@@ -2,14 +2,25 @@
 
 int main()
 {
-	try
 	{
-		Bureaucrat chip("Chip", 1);
-		std::cout << chip << std::endl;
-		chip.decrGrade();
+		try {
+			Bureaucrat alex("Alex", 1);
+			alex.decrGrade();
+			std::cout << alex << std::endl;
+			alex.incrGrade();
+			std::cout << alex << std::endl;
+		}
+		catch (std::exception &e) {
+			std::cout << e.what() << std::endl;
+		}
 	}
-	catch (std::exception &e)
+	std::cout << std::endl;
 	{
-		std::cout << e.what() << std::endl;
+		try {
+			Bureaucrat alex("Alex", 151);
+		}
+		catch (std::exception &e) {
+			std::cout << e.what() << std::endl;
+		}
 	}
 }
