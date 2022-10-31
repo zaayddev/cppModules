@@ -1,10 +1,10 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : name("Default"), grade(LOW){
+Bureaucrat::Bureaucrat() : name("Default"), grade(LOW) {
 	std::cout << "Default Constructor called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(std::string _name, int _grade) : name(_name), grade(_grade){
+Bureaucrat::Bureaucrat(std::string _name, int _grade) : name(_name), grade(_grade) {
 	std::cout << "Constructor called" << std::endl;
 	if (_grade < HIGH)
 		throw Bureaucrat::GradeTooHighException();
@@ -25,7 +25,7 @@ Bureaucrat & Bureaucrat::operator=(const Bureaucrat &src) {
 	std::cout << "Assignment operator called" << std::endl;
 	if (this != &src) {
 		this->grade = src.grade;
-		//const_cast<std::string&>(name) = src.name;
+		const_cast<std::string&>(name) = src.name;
 	}
 	return *this;
 }

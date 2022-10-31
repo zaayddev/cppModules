@@ -6,11 +6,12 @@
 class Bureaucrat;
 
 class Form
-{
-	const std::string _name;
-	bool _signed;
-	const int _grade;
-	const int _exec;
+{	
+	private:
+		const std::string _name;
+		bool _signed;
+		const int _grade;
+		const int _exec;
 
 	public:
 		Form();

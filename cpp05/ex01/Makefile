@@ -1,25 +1,23 @@
-NAME = Bureaucracy
-FLAGS = -Wall -Wextra -Werror -std=c++98
-RM = rm -rf
-CC = c++
+NAME		=	program
 
-SRC = Form.cpp Bureaucrat.cpp main.cpp
-OBJ = $(SRC:.cpp=.o)
+SRCS		=	main.cpp Form.cpp Bureaucrat.cpp
 
-all: $(NAME)
+CC			=	c++
 
-$(NAME): $(OBJ)
-	$(CC) $(FLAGS) $(OBJ) -o $(NAME)
+RM			=	rm
 
-%.o:%.cpp Form.hpp Bureaucrat.hpp main.hpp
-	$(CC) $(FLAGS) -c $< -o $@
+CFLAGS		=	-Wall -Werror -Wextra -std=c++98
 
-clean:
-	$(RM) $(OBJ)
+all:		$(NAME)
 
-fclean: clean
-	$(RM) $(NAME)
+$(NAME):	$(SRCS)
+			$(CC) $(CFLAGS) -o $(NAME) $(SRCS)
 
-re: fclean all
+clean:		
+			$(RM) -f $(NAME)
 
-.PHONY: all clean fclean
+fclean:		clean
+
+re:			fclean all
+
+.PHONY:		all clean fclean re

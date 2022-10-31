@@ -1,25 +1,28 @@
 #include "Form.hpp"
 
-Form::Form() : _name("Default"), _signed(false), _grade(LOW), _exec(LOW)  
-{}
+Form::Form() : _name("Default"), _signed(false), _grade(LOW), _exec(LOW) {
+	//std::cout << "Form Default Constructor called" << std::endl;
+}
 
-Form::Form(std::string name, int grade, int exec) : _name(name), _signed(false), _grade(grade), _exec(exec)
-{
+Form::Form(std::string name, int grade, int exec) : _name(name), _signed(false), _grade(grade), _exec(exec) {
+	//std::cout << "Form Constructor called" << std::endl;
 	if (this->_grade < HIGH || this->_exec < HIGH)
 		throw Form::GradeTooHigh();
 	else if (this->_grade > LOW || this->_exec > LOW)
 		throw Form::GradeTooLow();
 }
 
-Form::~Form()
-{}
+Form::~Form() {
+	//std::cout << "Form Destructor called" << std::endl;
+}
 
-Form::Form(const Form &src) : _name(src._name), _grade(src._grade), _exec(src._exec)
-{
+Form::Form(const Form &src) : _name(src._name), _grade(src._grade), _exec(src._exec) {
+	//std::cout << "Form Copy Constructor called" << std::endl;	
 	*this = src;
 }
 
 Form &Form::operator=(const Form &src) {
+	//std::cout << "Form Assignment operator called" << std::endl;
 	if (this != &src)
 	{
 		if (this->_grade < HIGH || this->_exec < HIGH)
@@ -31,36 +34,30 @@ Form &Form::operator=(const Form &src) {
 	return *this;
 }
 
-std::string Form::getName() const
-{
+std::string Form::getName() const {
 	return this->_name;
 }
 
-int Form::getGrade() const
-{
+int Form::getGrade() const {
 	return this->_grade;
 }
 
-int Form::getExec() const
-{
+int Form::getExec() const {
 	return this->_exec;
 }
 
-bool Form::getSign() const
-{
+bool Form::getSign() const {
 	return this->_signed;
 }
 
-void Form::beSigned(const Bureaucrat &bur)
-{
+void Form::beSigned(const Bureaucrat &bur) {
 	if (bur.getGrade() <= _exec)
 		_signed = true;
 	else
 		throw GradeTooLow();
 }
 
-std::ostream &operator<<(std::ostream &o, const Form &src)
-{
+std::ostream &operator<<(std::ostream &o, const Form &src) {
 	std::cout << "Name: " << src.getName() << std::endl;
 	std::cout << "Grade: " << src.getGrade() << std::endl;
 	std::cout << "Execution: " << src.getExec() << std::endl;
@@ -69,14 +66,12 @@ std::ostream &operator<<(std::ostream &o, const Form &src)
 	return o;
 }
 
-const char *Form::GradeTooHigh::what() const throw()
-{
-	return "Form: Grade is too high";
+const char *Form::GradeTooHigh::what() const throw() {
+	return " because Grade is too high";
 }
 
-const char *Form::GradeTooLow::what() const throw()
-{
-	return "Form: Grade is too low";
+const char *Form::GradeTooLow::what() const throw() {
+	return " because Grade is too low";
 }
 
 

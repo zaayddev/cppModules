@@ -7,8 +7,6 @@
 # include <exception>
 # include "Form.hpp"
 class Form;
-
-
 class Bureaucrat
 {
 	const std::string name;
