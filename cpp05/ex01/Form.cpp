@@ -6,9 +6,9 @@ Form::Form() : _name("Default"), _signed(false), _grade(LOW), _exec(LOW) {
 
 Form::Form(std::string name, int grade, int exec) : _name(name), _signed(false), _grade(grade), _exec(exec) {
 	//std::cout << "Form Constructor called" << std::endl;
-	if (this->_grade < HIGH || this->_exec < HIGH)
+	if (this->_grade < HIGH)
 		throw Form::GradeTooHigh();
-	else if (this->_grade > LOW || this->_exec > LOW)
+	else if (this->_grade > LOW )
 		throw Form::GradeTooLow();
 }
 
@@ -23,11 +23,10 @@ Form::Form(const Form &src) : _name(src._name), _grade(src._grade), _exec(src._e
 
 Form &Form::operator=(const Form &src) {
 	//std::cout << "Form Assignment operator called" << std::endl;
-	if (this != &src)
-	{
-		if (this->_grade < HIGH || this->_exec < HIGH)
+	if (this != &src) {
+		if (this->_grade < HIGH)
 			throw Form::GradeTooHigh();
-		else if (this->_grade > LOW || this->_exec > LOW)
+		else if (this->_grade > LOW)
 			throw Form::GradeTooLow();
 		this->_signed = src._signed;
 	}
@@ -50,20 +49,20 @@ bool Form::getSign() const {
 	return this->_signed;
 }
 
-void Form::beSigned(const Bureaucrat &bur) {
-	if (bur.getGrade() <= _exec)
+void Form::beSigned(const Bureaucrat &bureaucrat) {
+	if (bureaucrat.getGrade() <= _grade)
 		_signed = true;
 	else
 		throw GradeTooLow();
 }
 
-std::ostream &operator<<(std::ostream &o, const Form &src) {
-	std::cout << "Name: " << src.getName() << std::endl;
-	std::cout << "Grade: " << src.getGrade() << std::endl;
-	std::cout << "Execution: " << src.getExec() << std::endl;
-	std::cout << "Signed (0/1): " << src.getSign() << std::endl;
+std::ostream &operator<<(std::ostream &out, const Form &src) {
+	std::cout << "Name         : " << src.getName()  << std::endl;
+	std::cout << "Grade        : " << src.getGrade() << std::endl;
+	std::cout << "Execution    : " << src.getExec()  << std::endl;
+	std::cout << "Signed (0/1) : " << src.getSign()  << std::endl;
 	
-	return o;
+	return out;
 }
 
 const char *Form::GradeTooHigh::what() const throw() {

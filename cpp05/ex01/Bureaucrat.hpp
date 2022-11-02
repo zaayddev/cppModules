@@ -2,11 +2,14 @@
 # define BUREAUCRAT_HPP
 # define HIGH 1
 # define LOW 150
+
 # include <iostream>
 # include <string>
 # include <exception>
-# include "Form.hpp"
+
 class Form;
+# include "Form.hpp"
+
 class Bureaucrat
 {
 	const std::string name;

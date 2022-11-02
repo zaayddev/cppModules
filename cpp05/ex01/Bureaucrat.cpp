@@ -31,14 +31,17 @@ Bureaucrat & Bureaucrat::operator=(const Bureaucrat &src) {
 }
 
 void Bureaucrat::signForm(Form &form) {
-	try {
-		form.beSigned(*this);
-		std::cout << getName() << " signed " << form.getName() << std::endl; 
-	}
-	catch (std::exception &e) {
-		std::cout << getName() << " couldn't sign " << form.getName();
-		std::cout << e.what() << std::endl;
-	}
+	if (form.getSign() == true)
+		std::cout << "\033[0;36mYour form is already signed\033[0;37m" << std::endl;
+	else
+		try {
+			form.beSigned(*this);
+			std::cout << "\x1B[31m" << getName() << " signed " << form.getName() << "\033[0m" << std::endl; 
+		}
+		catch (std::exception &e) {
+			std::cout << "\033[0;34m" << getName() << " couldn't sign " << form.getName();
+			std::cout << e.what() << "\033[0m" << std::endl;
+		}
 }
 
 std::string Bureaucrat::getName() const {
@@ -69,7 +72,7 @@ const char *Bureaucrat::GradeTooLowException::what() const throw() {
 	return "Grade is too low";
 }
 
-std::ostream &operator<<(std::ostream &o, const Bureaucrat &src) {
-	o << src.getName() << ", bureaucrat grade " << src.getGrade();
-	return o;
+std::ostream &operator<<(std::ostream &out, const Bureaucrat &src) {
+	out << src.getName() << ", bureaucrat grade " << src.getGrade();
+	return out;
 }
