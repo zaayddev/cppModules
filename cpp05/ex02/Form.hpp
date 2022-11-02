@@ -2,15 +2,17 @@
 # define FORM_HPP
 # define HIGH 1
 # define LOW 150
-# include "Bureaucrat.hpp"
+
 class Bureaucrat;
+# include "Bureaucrat.hpp"
 
 class Form
 {
-	const std::string _name;
-	bool _signed;
-	const int _grade;
-	const int _exec;
+	private:
+		const std::string _name;
+		bool _signed;
+		const int _grade;
+		const int _exec;
 
 	public:
 		Form();
@@ -40,6 +42,6 @@ class Form
 		};     
 };
 
-std::ostream &operator<<(std::ostream &o, const Form &src);
+std::ostream &operator<<(std::ostream &out, const Form &src);
 
 #endif

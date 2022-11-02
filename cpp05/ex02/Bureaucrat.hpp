@@ -5,14 +5,15 @@
 # include <iostream>
 # include <string>
 # include <exception>
-# include "Form.hpp"
-class Form;
 
+class Form;
+# include "Form.hpp"
 
 class Bureaucrat
 {
-	const std::string name;
-	int grade;
+	private:
+		const std::string name;
+		int grade;
 	
 	public:
 		Bureaucrat();

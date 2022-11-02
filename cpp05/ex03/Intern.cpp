@@ -11,10 +11,6 @@ Intern::Intern(const Intern &src)
 Intern::~Intern()
 {}
 
-Intern &Intern::operator=(const Intern &src)
-{
-	return *this;
-}
 
 static int complain(std::string name)
 {

@@ -4,9 +4,9 @@ int main()
 {
 	{
 		try {
-			Form f1 = Form("C00", 10, 11);
-			Bureaucrat b1 = Bureaucrat("C01", 9);
-			Bureaucrat b2 = Bureaucrat("C02", 1);
+			Form f1 = Form("28C", 10, 11);
+			Bureaucrat b1 = Bureaucrat("A007", 9);
+			Bureaucrat b2 = Bureaucrat("A008", 1);
 			
 			std::cout << f1 << std::endl;
 			
@@ -22,8 +22,8 @@ int main()
 	std::cout << std::endl;
 	{
 		try {
-			Form f1 = Form("C00", 10, 11);
-			Bureaucrat b1 = Bureaucrat("C01", 44);
+			Form f1 = Form("28C", 10, 11);
+			Bureaucrat b1 = Bureaucrat("A007", 44);
 			
 			std::cout << f1 << std::endl;
 			
