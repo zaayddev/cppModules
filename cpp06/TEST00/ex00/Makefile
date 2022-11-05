@@ -1,36 +1,23 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: root <root@student.42.fr>                  +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/10/22 16:10:06 by root              #+#    #+#              #
-#    Updated: 2022/10/25 14:14:39 by root             ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+NAME		=	convert
 
-NAME = convert
-SRCS = main.cpp  \
-		Convert.cpp
-CPP = c++
-CPP_FLAGS = -Wall -Wextra -Werror -std=c++98
-OBJS = $(SRCS:%.cpp=%.o)
+SRCS		=	main.cpp Convert.cpp
 
-all: $(NAME)
+CC			=	c++
 
-$(NAME) : $(OBJS)
-	$(CPP) $(CPP_FLAGS) $(OBJS) -o $(NAME)
+RM			=	rm
 
-%.o: %.cpp
-	$(CPP) -c $(CPP_FLAGS) $?
+CFLAGS		=	-Wall -Werror -Wextra -std=c++98
 
-clean:
-	rm -rf $(OBJS)
+all:		$(NAME)
 
-fclean : clean
-	rm -rf $(NAME)
+$(NAME):	$(SRCS)
+			$(CC) $(CFLAGS) -o $(NAME) $(SRCS)
 
-re : fclean all
+clean:		
+			$(RM) -f $(NAME)
 
-.PHONY: fclean clean re all
+fclean:		clean
+
+re:			fclean all
+
+.PHONY:		all clean fclean re
