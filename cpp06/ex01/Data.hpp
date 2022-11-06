@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   A.hpp                                              :+:      :+:    :+:   */
+/*   Data.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: lle-briq <lle-briq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 16:51:56 by mthiry            #+#    #+#             */
-/*   Updated: 2022/10/25 18:28:31 by root             ###   ########.fr       */
+/*   Created: 2022/01/04 18:25:13 by lle-briq          #+#    #+#             */
+/*   Updated: 2022/01/04 18:25:13 by lle-briq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef A_HPP
-# define A_HPP
-# include "Base.hpp"
+#ifndef DATA_HPP
+# define DATA_HPP
 
-class A : public Base { };
+class Data
+{
+	private:
+		int	_value;
 
-#endif
+		Data(const Data &data);
+		Data	&operator=(const Data &data);
+		
+	public:
+		Data(void);
+		virtual ~Data();
+
+		int	getValue(void) const;
+};
+
+# endif

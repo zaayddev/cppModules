@@ -3,24 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   Base.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: guhernan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lle-briq <lle-briq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/30 19:00:39 by guhernan          #+#    #+#             */
-/*   Updated: 2021/11/30 19:10:41 by guhernan         ###   ########.fr       */
+/*   Created: 2022/01/04 18:46:29 by lle-briq          #+#    #+#             */
+/*   Updated: 2022/01/04 18:46:29 by lle-briq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BASE_HPP
 # define BASE_HPP
 
-#include <random>
-#include <string>
-#include <iostream>
-
-class Base {
-
+class Base
+{		
 	public:
-		virtual ~Base();
+		virtual ~Base() {}
 };
 
 #endif

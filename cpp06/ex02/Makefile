@@ -1,51 +1,46 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: guhernan <marvin@42.fr>                    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/11/19 17:32:21 by guhernan          #+#    #+#              #
-#    Updated: 2021/12/02 13:26:41 by guhernan         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+CC			= c++ -Wall -Wextra -Werror -std=c++98
+RM			= rm -rf
+NAME		= ./identify
+NAME_SHORT	= identify
 
-CC := c++
+INCS_DIR	= ./
+MAIN_INC	= -I$(INCS_DIR)
+INCS		= $(shell find $(INCS_DIR) -type f -name "*.hpp")
 
-NAME := serialisation
+SRCS_DIR 	= ./
+SRCS		= $(shell find $(SRCS_DIR) -type f -name "*.cpp")
 
-CFLAGS := -Wall -Wextra -Werror -std=c++98 -Wshadow
+OBJS_DIR	= ./
+OBJS		= $(SRCS:$(SRCS_DIR)%.cpp=$(OBJS_DIR)%.o)
 
-###############################################################################
+_COLOR		= \033[32m
+_BOLDCOLOR	= \033[32;1m
+_RESET		= \033[0m
+_CLEAR		= \033[0K\r\c
+_OK			= [\033[32mOK\033[0m]
 
-SRCS := Base.cpp
+$(OBJS_DIR)%.o	: $(SRCS_DIR)%.cpp
+			@mkdir -p $(OBJS_DIR)
+			@echo "[..] $(NAME_SHORT)... compiling $*.cpp\r\c"
+			@$(CC) $(MAIN_INC) -c $< -o $@
+			@echo "$(_CLEAR)"
 
-OBJS := $(SRCS:%.cpp=%.o)
+all			: $(NAME)
 
-INC := $(SRCS:%.cpp=%.hpp) A.hpp B.hpp C.hpp
+$(NAME)		: $(OBJS) $(INCS)
+			@$(CC) $(OBJS) $(MAIN_INC) -o $(NAME)
+			@echo "$(_OK) $(NAME_SHORT) compiled"
 
-MAIN := main.cpp
+clean		:
+ifeq ($(OBJS_DIR), ./)
+			@$(RM) $(OBJS)
+else
+			@$(RM) $(OBJS_DIR)
+endif
 
-###############################################################################
+fclean		: clean
+			@$(RM) $(NAME)
 
-all : 		$(NAME)
+re			: fclean all
 
-$(NAME) :	$(OBJS) $(MAIN)
-	$(CC) $(CFLAGS) $^ -o $(NAME)
-
-%.o :		%.cpp $(INC)
-	$(CC) $(CFLAGS) -c $< -o $@
-
-###############################################################################
-
-clean :
-	$(RM) $(OBJS)
-
-fclean : clean
-	$(RM) $(NAME)
-
-re : fclean all
-
-###############################################################################
-
-.PHONY : all clean fclean re
+.PHONY		: all clean fclean re

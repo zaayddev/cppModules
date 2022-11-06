@@ -1,62 +1,29 @@
 #ifndef CASTS_HPP
 # define CASTS_HPP
 
-# include <iostream>
-# include <cstdlib>
-# include <cerrno>
-# include <limits>
-# include <cstring>
+# include <string>
 
-class Casts
-{
-	private:
-		bool		_charConvOk;
-		bool		_intConvOk;
-		bool		_floatConvOk;
-		bool		_doubleConvOk;
+class Casts {
+public:
+  Casts(const std::string &input);
+  ~Casts(void);
 
-		char		_charValue;
-		int			_intValue;
-		float		_floatValue;
-		double		_doubleValue;
+  const std::string &get_input(void) const;
+  double get_value(void) const;
+  void print(void) const;
 
-		int			_isLimitBool;
-		std::string	_limit;
-		bool		_stringError;
-		bool		_outOfRange;
+private:
+  Casts(void);
+  Casts(const Casts &origin);
+  Casts &operator=(const Casts &rhs);
 
-		Casts(void);
-		Casts(const Casts &Casts);
-		Casts	&operator=(const Casts &Casts);
+  void print_to_char(void) const;
+  void print_to_int(void) const;
+  void print_to_float(void) const;
+  void print_to_double(void) const;
 
-		bool		_isLimit(const char *value);
-		int			_getType(const char *value);
-
-		void		_convFromChar(const char *value);
-		void		_convFromInt(const char *value);
-		void		_convFromFloat(const char *value);
-		void		_convFromDouble(const char *value);
-
-	public:
-		Casts(const char *value);
-		virtual ~Casts();
-
-		void		printChar(std::ostream &o = std::cout) const;
-		void		printInt(std::ostream &o = std::cout) const;
-		void		printFloat(std::ostream &o = std::cout) const;
-		void		printDouble(std::ostream &o = std::cout) const;
-		bool		getOutOfRange(void) const;
-		bool		getStringError(void) const;
-
-		static const int	charType = 0;
-		static const int	intType = 1;
-		static const int	floatType = 2;
-		static const int	doubleType = 3;
-		static const int	wrongType = 4;
+  const std::string input_;
+  const double value_;
 };
-
-std::ostream	&operator<<(std::ostream &output, const Casts &Casts);
-
-typedef void (Casts::*convFunction)(const char *);
 
 #endif

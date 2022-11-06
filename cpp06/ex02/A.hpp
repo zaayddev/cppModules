@@ -3,19 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   A.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: guhernan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lle-briq <lle-briq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/30 19:01:57 by guhernan          #+#    #+#             */
-/*   Updated: 2021/11/30 20:59:48 by guhernan         ###   ########.fr       */
+/*   Created: 2022/01/04 18:47:32 by lle-briq          #+#    #+#             */
+/*   Updated: 2022/01/04 18:47:32 by lle-briq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef A_HPP
 # define A_HPP
+# include "Base.hpp"
 
-#include "Base.hpp"
-
-class A : public Base {
-};
+class A : public Base {};
 
 #endif

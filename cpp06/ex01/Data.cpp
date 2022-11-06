@@ -3,23 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   Data.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: root <root@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: lle-briq <lle-briq@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/24 16:47:28 by mthiry            #+#    #+#             */
-/*   Updated: 2022/10/25 17:39:14 by root             ###   ########.fr       */
+/*   Created: 2022/01/04 18:32:24 by lle-briq          #+#    #+#             */
+/*   Updated: 2022/01/04 18:32:24 by lle-briq         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Data.hpp"
 
-/* Other functions*/
+/*
+**		CONSTRUCTORS AND DESTRUCTOR
+*/
 
-uintptr_t   serialize(Data* ptr)
+Data::Data(void) : _value(42)
 {
-    return (reinterpret_cast<uintptr_t>(ptr));
+	return ;
 }
 
-Data*   deserialize(uintptr_t raw)
+Data::Data(const Data &data)
 {
-    return (reinterpret_cast<Data *>(raw));
+	*this = data;
+}
+
+Data::~Data()
+{
+	return ;
+}
+
+/*
+**		OVERLOAD OPERATORS
+*/
+
+Data	&Data::operator=(const Data &data)
+{
+	if (this != &data)
+		this->_value = data._value;
+	return (*this);
+}
+
+/*
+**		MEMBER FUNCTIONS
+*/
+
+int	Data::getValue(void) const
+{
+	return (_value);
 }

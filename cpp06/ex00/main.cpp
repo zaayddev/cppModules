@@ -1,13 +1,19 @@
 #include "Casts.hpp"
 
-int	main(int argc, char **argv)
-{
-	if (argc != 2)
-	{
-		std::cout << "Use ./convert litteralValue" << std::endl;
-		return (1);
-	}
-	Casts	conv(argv[1]);
-	std::cout << conv;
-	return (0);
+#include <iostream>
+#include <exception>
+#include <iomanip>
+
+int main(int argc, char **argv) {
+  if (argc == 2) {
+    try {
+      Casts casts(argv[1]);
+      casts.print();
+    }
+    catch (std::exception &e) {
+      std::cerr << e.what() << std::endl;
+    }
+  }
+  else
+    std::cerr << "usage : ./convert [literal] (only one)" << std::endl;
 }
