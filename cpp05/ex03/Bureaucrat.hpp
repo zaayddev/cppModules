@@ -5,8 +5,9 @@
 # include <iostream>
 # include <string>
 # include <exception>
-# include "Form.hpp"
+
 class Form;
+# include "Form.hpp"
 
 
 class Bureaucrat

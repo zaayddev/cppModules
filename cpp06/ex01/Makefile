@@ -1,46 +1,53 @@
-CC			= c++ -Wall -Wextra -Werror -std=c++98
-RM			= rm -rf
-NAME		= ./serialize
-NAME_SHORT	= serialize
+.SUFFIXES:
 
-INCS_DIR	= ./
-MAIN_INC	= -I$(INCS_DIR)
-INCS		= $(shell find $(INCS_DIR) -type f -name "*.hpp")
+NAME	=	data
+LIST	=	main \
+			Data \
+			
+HEADER	=	-I includes/
+CFLAGS	=	-Wall -Wextra -Werror -MMD -std=c++98
+CC		=	clang++
 
-SRCS_DIR 	= ./
-SRCS		= $(shell find $(SRCS_DIR) -type f -name "*.cpp")
+S_DIR	=	srcs/
+I_DIR	=	includes/
+O_DIR	=	objs/
+D_DIR	=	deps/
 
-OBJS_DIR	= ./
-OBJS		= $(SRCS:$(SRCS_DIR)%.cpp=$(OBJS_DIR)%.o)
+C_SUFF	=	.cpp
+O_SUFF	=	.o
+D_SUFF	=	.d
 
-_COLOR		= \033[32m
-_BOLDCOLOR	= \033[32;1m
-_RESET		= \033[0m
-_CLEAR		= \033[0K\r\c
-_OK			= [\033[32mOK\033[0m]
+DIR_O	=	@mkdir -p objs/
+DIR_D	=	@mkdir -p deps/
 
-$(OBJS_DIR)%.o	: $(SRCS_DIR)%.cpp
-			@mkdir -p $(OBJS_DIR)
-			@echo "[..] $(NAME_SHORT)... compiling $*.cpp\r\c"
-			@$(CC) $(MAIN_INC) -c $< -o $@
-			@echo "$(_CLEAR)"
+RM_FILE	= rm -f
+RM_DIR	= rm -rf
 
-all			: $(NAME)
+LIST_C	= $(addprefix $(S_DIR), $(LIST))
+LIST_O	= $(addprefix $(O_DIR), $(LIST))
+LIST_D	= $(addprefix $(D_DIR), $(LIST))
 
-$(NAME)		: $(OBJS) $(INCS)
-			@$(CC) $(OBJS) $(MAIN_INC) -o $(NAME)
-			@echo "$(_OK) $(NAME_SHORT) compiled"
+SRCS	= $(addsuffix $(C_SUFF), $(LIST_C))
+OBJS	= $(addsuffix $(O_SUFF), $(LIST_O))
+DEPS	= $(OBJS:.o=.d)
 
-clean		:
-ifeq ($(OBJS_DIR), ./)
-			@$(RM) $(OBJS)
-else
-			@$(RM) $(OBJS_DIR)
-endif
+$(O_DIR)%.o	:	$(S_DIR)%.cpp
+				$(DIR_O)
+				$(CC) $(CFLAGS) $(HEADER) -c $< -o $@
 
-fclean		: clean
-			@$(RM) $(NAME)
+$(NAME)	:		$(OBJS)
+				$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
-re			: fclean all
+all	:			$(NAME)
 
-.PHONY		: all clean fclean re
+clean	:		
+				$(RM_DIR) $(O_DIR) $(D_DIR)
+
+fclean	:		clean
+				$(RM_FILE) $(NAME)
+
+re	:			fclean all
+
+.PHONY	:		all clean fclean re
+
+-include	$(DEPS)

@@ -35,7 +35,7 @@ void ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
 		file << "                                                         .\n";
 		file << "                                              .         ;\n";  
 		file << "                 .              .              ;%     ;;\n";   
-		file << "                   ,           ,                :;%  %;\n";   
+		file << "                   ,                           :;%  %;\n";   
 		file << "                    :         ;                   :;%;'     .,\n";   
 		file << "           ,.        %;     %;            ;        %;'    ,;\n";
 		file << "             ;       ;%;  %%;        ,     %;    ;%;    ,%'\n";

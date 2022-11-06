@@ -2,8 +2,9 @@
 # define FORM_HPP
 # define HIGH 1
 # define LOW 150
-# include "Bureaucrat.hpp"
+
 class Bureaucrat;
+# include "Bureaucrat.hpp"
 
 class Form
 {

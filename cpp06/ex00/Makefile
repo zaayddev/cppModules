@@ -1,6 +1,6 @@
 NAME		=	convert
 
-SRCS		=	main.cpp Casts.cpp
+SRCS		=	main.cpp Conv.cpp
 
 CC			=	c++
 

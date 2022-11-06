@@ -6,25 +6,7 @@
 
 int main()
 {
-	srand(time(NULL));
-	Bureaucrat b1 = Bureaucrat("Ash", 125);
-	Bureaucrat b2 = Bureaucrat("Gzizlav", 5);		
-	Intern intern = Intern();
-	Form *ptr = NULL;
-	try
-	{
-		ptr = intern.makeForm("robotomy request", "Ash");
-		std::cout << *ptr << std::endl;
-		ptr->beSigned(b2);
-		ptr->execute(b2);
-		delete ptr;
-		ptr = intern.makeForm("asdasdasd", "Ash");
-		std::cout << *ptr << std::endl;
-		ptr->beSigned(b1);
-		ptr->execute(b1);
-	}
-	catch (std::exception & e) 
-	{
-		std::cout << "Exception: " << e.what() << std::endl;
-	}
+	Intern someRandomIntern;
+	Form* rrf;
+	rrf = someRandomIntern.makeForm("robotomy request", "Bender");
 }

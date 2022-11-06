@@ -1,19 +1,21 @@
-#include "Casts.hpp"
+#include "Conv.hpp"
 
-#include <iostream>
-#include <exception>
-#include <iomanip>
+int main(int ac, char **av)
+{
+    if (ac != 2 || (ac == 2 && !std::strlen(av[1])))
+    {
+        std:: cout << "please provide one argument [ char ] or [ int ] or [ float ] or [ double ]" << std::endl;
+        return 1;
+    }
+    try
+    {
+        Conv toConvert(av[1]);
 
-int main(int argc, char **argv) {
-  if (argc == 2) {
-    try {
-      Casts casts(argv[1]);
-      casts.print();
+        toConvert.printConv();
     }
-    catch (std::exception &e) {
-      std::cerr << e.what() << std::endl;
+    catch (std::exception &e)
+    {
+        std::cout << e.what() << std::endl;
     }
-  }
-  else
-    std::cerr << "usage : ./convert [literal] (only one)" << std::endl;
+    return 0;
 }
