@@ -127,7 +127,7 @@ bool Conv::checkValidD() {
 }
 // https://cplusplus.com/reference/cmath/isnan/
 bool Conv::isConstant() {
-    if (isnan(_valueF) || _valueF == INFINITY || -_valueF == INFINITY)
+    if (_valueD != _valueD || _valueF == INFINITY || -_valueF == INFINITY)
         return 1;
     return 0;
 }
@@ -176,7 +176,7 @@ void Conv::printConv() {
     if (isConstant()) {
         std::cout << "char: Impossible" << std::endl;
         std::cout << "int: Impossible" << std::endl;
-        if (isnan(this->_valueD)) {
+        if (this->_valueD != this->_valueD) {
             std::cout << "float: " << _valueF << "f" << std::endl;
             std::cout << "double: " << _valueD << std::endl;
         }

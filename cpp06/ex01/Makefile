@@ -1,53 +1,23 @@
-.SUFFIXES:
+NAME		=	data
 
-NAME	=	data
-LIST	=	main \
-			Data \
-			
-HEADER	=	-I includes/
-CFLAGS	=	-Wall -Wextra -Werror -MMD -std=c++98
-CC		=	clang++
+SRCS		=	main.cpp Data.cpp
 
-S_DIR	=	srcs/
-I_DIR	=	includes/
-O_DIR	=	objs/
-D_DIR	=	deps/
+CC			=	c++
 
-C_SUFF	=	.cpp
-O_SUFF	=	.o
-D_SUFF	=	.d
+RM			=	rm
 
-DIR_O	=	@mkdir -p objs/
-DIR_D	=	@mkdir -p deps/
+CFLAGS		=	-Wall -Werror -Wextra -std=c++98
 
-RM_FILE	= rm -f
-RM_DIR	= rm -rf
+all:		$(NAME)
 
-LIST_C	= $(addprefix $(S_DIR), $(LIST))
-LIST_O	= $(addprefix $(O_DIR), $(LIST))
-LIST_D	= $(addprefix $(D_DIR), $(LIST))
+$(NAME):	$(SRCS)
+			$(CC) $(CFLAGS) -o $(NAME) $(SRCS)
 
-SRCS	= $(addsuffix $(C_SUFF), $(LIST_C))
-OBJS	= $(addsuffix $(O_SUFF), $(LIST_O))
-DEPS	= $(OBJS:.o=.d)
+clean:		
+			$(RM) -f $(NAME)
 
-$(O_DIR)%.o	:	$(S_DIR)%.cpp
-				$(DIR_O)
-				$(CC) $(CFLAGS) $(HEADER) -c $< -o $@
+fclean:		clean
 
-$(NAME)	:		$(OBJS)
-				$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+re:			fclean all
 
-all	:			$(NAME)
-
-clean	:		
-				$(RM_DIR) $(O_DIR) $(D_DIR)
-
-fclean	:		clean
-				$(RM_FILE) $(NAME)
-
-re	:			fclean all
-
-.PHONY	:		all clean fclean re
-
--include	$(DEPS)
+.PHONY:		all clean fclean re

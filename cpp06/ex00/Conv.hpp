@@ -1,5 +1,4 @@
-#ifndef CONV_HPP
-#define CONV_HPP
+#pragma once
 
 #include <iostream>
 #include <climits>
@@ -47,5 +46,3 @@ class Conv
         ~Conv();
         void printConv();
 };
-
-#endif
