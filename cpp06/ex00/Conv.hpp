@@ -44,7 +44,7 @@ class Conv
         Conv(char* const value);
         Conv(Conv const & rhs);
         Conv const operator=(Conv const & rhs);
-        virtual ~Conv();
+        ~Conv();
         void printConv();
 };
 

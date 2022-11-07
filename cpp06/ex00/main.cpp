@@ -1,16 +1,19 @@
+/*  Converting an expression of a given type into another type 
+    is known as type-casting
+*/
 #include "Conv.hpp"
+#include <iomanip>
 
 int main(int ac, char **av)
 {
     if (ac != 2 || (ac == 2 && !std::strlen(av[1])))
     {
-        std:: cout << "please provide one argument [ char ] or [ int ] or [ float ] or [ double ]" << std::endl;
+        std::cout << "error; argument" << std::endl;
         return 1;
     }
     try
-    {
+    {   
         Conv toConvert(av[1]);
-
         toConvert.printConv();
     }
     catch (std::exception &e)

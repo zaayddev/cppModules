@@ -1,37 +1,36 @@
 #include "Conv.hpp"
-
+/* Default constructor */
 Conv::Conv() : _value("") {
-    whichType();
 }
-
+/* Constructor */
 Conv::Conv(char* const value) : _value(value) {
     whichType();
 }
-
+/* Copy constructor */
 Conv::Conv(Conv const & rhs) : _value(rhs._value) {
     whichType();
 }
-
+/* Copy assignment operator */
 Conv const Conv::operator=(Conv const & rhs) {
     //new (this) Conv(rhs);
     (void) rhs;
     return *this;
 }
-
+/* Destructor */
 Conv::~Conv() {
 }
-
+/* Exeption */
 const char* Conv::IncorrectTypeException::what() const throw() {
-    return "type exception : types are [ char ] || [ int ] || [ float ] || [ double ]";
+    return "error; exception";
 }
-
+/* Check if value consist of 1 ascii char diffr than digits chars */
 bool Conv::isChar() {
     if (std::strlen(this->_value) == 1 && (this->_value[0] >= 32 && this->_value[0] <= 126)
-    && (!(this->_value[0] >= '0' && this->_value[0] <= '9'))) //check value is a char concist of 1len and value is ascii differ 
-        return 1;                                                        // of digits
+    && (!(this->_value[0] >= '0' && this->_value[0] <= '9')))
+        return 1;                                                 
     return 0;
 }
-
+/* Check if value is a posit or negt int number */
 bool Conv::isInt() {
     size_t i = 0;
 
@@ -45,7 +44,7 @@ bool Conv::isInt() {
     }
     return 1;
 }
-
+/* Check if value is a posit or neg float number consist of a point and f or F at the end */
 bool Conv::isFloat() {
     size_t i = 0;
 
@@ -57,11 +56,11 @@ bool Conv::isFloat() {
             return 0;
         i++;
     }
-    if (this->_value[i] == 'f')
+    if (this->_value[i] == 'f' || this->_value[i] == 'F')
         return 1;
     return 0;
 }
-
+/* Check if value is a posit or neg double number consist of a point */
 bool Conv::isDouble() {
     size_t i = 0;
 
@@ -73,11 +72,13 @@ bool Conv::isDouble() {
             return 0;
         i++;
     }
-    if (this->_value[i] == 'f' || !std::isdigit(this->_value[i]))
+    if (this->_value[i] == 'f' || this->_value[i] == 'F' || !std::isdigit(this->_value[i]))
         return 0;
     return 1;
 }
-
+/*  if, value consist of one char, cast it to its decimal value 
+    else if, value is more than one char, convert it to a double floating point value
+    else, value doesn't match the parsing, throw an error   */
 void Conv::whichType() {
     if (isChar())
     {
@@ -89,30 +90,30 @@ void Conv::whichType() {
     else
     {
         _valueC = static_cast<char>(std::strtod(_value, NULL));
-        _valueI = static_cast<int>(std::strtod(_value, NULL)); //check cast without strtod funct
+        _valueI = static_cast<int>(std::strtod(_value, NULL));
         _valueF = static_cast<float>(std::strtod(_value, NULL));
         _valueD = std::strtod(_value, NULL);
     }
-    if (!isConstant() && !isInt() && !isChar() && !isDouble() && !isFloat())
+    if (!isConstant() && !isInt() && !isChar() && !isFloat() && !isDouble())
         throw IncorrectTypeException();
 }
 
 bool Conv::checkValidC() {
-    if ((this->_valueI >= 32 && this->_valueI <= 126))
+    if ((this->_valueC >= 32 && this->_valueC <= 126))
         return 1;
     return 0;
 }
 
 bool Conv::checkValidI() {
-    if (this->_valueD >= INT_MIN && this->_valueD <= INT_MAX)
+    if (this->_valueI >= INT_MIN && this->_valueI <= INT_MAX)
         return 1;
     return 0;
 }
 
 bool Conv::checkValidF() {
-    if (_valueD != 0.0 && _valueD >= -FLT_MIN && _valueD <= FLT_MIN)
+    if (this->_valueF != 0.0 && this->_valueF >= -FLT_MIN && this->_valueF <= FLT_MIN)
         return 0;
-    if (this->_valueD >= -FLT_MAX && this->_valueD <= FLT_MAX && checkValidD())
+    if (this->_valueF >= -FLT_MAX && this->_valueF <= FLT_MAX && checkValidD())
         return 1;
     return 0;
 }
@@ -120,13 +121,13 @@ bool Conv::checkValidF() {
 bool Conv::checkValidD() {
     errno = 0;
     std::strtod(_value, NULL);
-    if (errno == ERANGE)
+    if (errno == ERANGE) // https://cplusplus.com/reference/cerrno/errno/
         return 0;
     return 1;
 }
-
+// https://cplusplus.com/reference/cmath/isnan/
 bool Conv::isConstant() {
-    if (this->_valueD != this->_valueD || this->_valueF == INFINITY || -this->_valueF == INFINITY)
+    if (isnan(_valueF) || _valueF == INFINITY || -_valueF == INFINITY)
         return 1;
     return 0;
 }
@@ -175,7 +176,7 @@ void Conv::printConv() {
     if (isConstant()) {
         std::cout << "char: Impossible" << std::endl;
         std::cout << "int: Impossible" << std::endl;
-        if (this->_valueD != this->_valueD) {
+        if (isnan(this->_valueD)) {
             std::cout << "float: " << _valueF << "f" << std::endl;
             std::cout << "double: " << _valueD << std::endl;
         }
