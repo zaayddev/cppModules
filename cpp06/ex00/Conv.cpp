@@ -27,8 +27,8 @@ const char* Conv::IncorrectTypeException::what() const throw() {
 
 bool Conv::isChar() {
     if (std::strlen(this->_value) == 1 && (this->_value[0] >= 32 && this->_value[0] <= 126)
-    && (!(this->_value[0] >= '0' && this->_value[0] <= '9')))
-        return 1;
+    && (!(this->_value[0] >= '0' && this->_value[0] <= '9'))) //check value is a char concist of 1len and value is ascii differ 
+        return 1;                                                        // of digits
     return 0;
 }
 
@@ -89,7 +89,7 @@ void Conv::whichType() {
     else
     {
         _valueC = static_cast<char>(std::strtod(_value, NULL));
-        _valueI = static_cast<int>(std::strtod(_value, NULL));
+        _valueI = static_cast<int>(std::strtod(_value, NULL)); //check cast without strtod funct
         _valueF = static_cast<float>(std::strtod(_value, NULL));
         _valueD = std::strtod(_value, NULL);
     }
@@ -162,7 +162,7 @@ void Conv::printDouble() {
     if (checkValidD()) {
         std::cout << "double: ";
         if (_valueD - _valueI == 0) {
-            std::cout << _valueD << ".0" << std::endl;
+            std::cout << _valueD << ".0" << std::endl; // Check this tmrw
         }
         else
             std::cout << _valueD << std::endl;
