@@ -1,24 +1,25 @@
 #pragma once
 
-#include <iostream>
-
 template <typename T>
 void swap(T& x, T& y)
 {
-   T t;
-   t = x;
+   T tmp;
+   tmp = x;
    x = y;
-   y = t;
+   y = tmp;
+   return ;
 }
 
 template <typename T>
-T max(T x, T y)
+T const & max(T & x, T & y)
 {
-   return (x >= y) ? x : y;
+   if (x == y)
+      return y;
+	return (x >= y ? x : y);
 }
 
 template <typename T>
-T min(T x, T y)
+T const & min(T & x, T & y)
 {
-   return (x <= y) ? x : y;
+	return (x <= y? x : y);
 }

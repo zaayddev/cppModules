@@ -1,4 +1,4 @@
-NAME		=	tmpl
+NAME		=	iter
 
 SRCS		=	main.cpp
 

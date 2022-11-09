@@ -163,7 +163,7 @@ void Conv::printDouble() {
     if (checkValidD()) {
         std::cout << "double: ";
         if (_valueD - _valueI == 0) {
-            std::cout << _valueD << ".0" << std::endl; // Check this tmrw
+            std::cout << _valueD << ".0" << std::endl;
         }
         else
             std::cout << _valueD << std::endl;

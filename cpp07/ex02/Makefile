@@ -1,4 +1,4 @@
-NAME		=	tmpl
+NAME		=	array
 
 SRCS		=	main.cpp
 
