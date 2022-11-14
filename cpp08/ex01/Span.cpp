@@ -37,27 +37,24 @@ void    Span::addNumber(int n) {
 unsigned int Span::longestSpan() {
 	if (this->_vector.size() <= 1)
 		throw (Span::NotEnoughNumbersException());
-
-	std::vector<int> newVector(this->_vector.size(), 0);
-	std::adjacent_difference(this->_vector.begin(), this->_vector.end(), newVector.begin());
-
-	std::vector<int>::iterator iter;
-	for (iter = newVector.begin(); iter != newVector.end(); ++iter)
-		*iter = std::abs(*iter);
-
-	return (*std::max_element(newVector.begin() + 1, newVector.end()));
+	int max = *max_element(_vector.begin(), _vector.end());
+	int min = *min_element(_vector.begin(), _vector.end());
+	return max - min;
 }
 
 unsigned int Span::shortestSpan() {
 	if (this->_vector.size() <= 1)
 		throw (Span::NotEnoughNumbersException());
-
 	std::vector<int> newVector(this->_vector.size(), 0);
 	std::adjacent_difference(this->_vector.begin(), this->_vector.end(), newVector.begin());
 
 	std::vector<int>::iterator iter;
 	for (iter = newVector.begin(); iter != newVector.end(); ++iter)
 		*iter = std::abs(*iter);
-
 	return (*std::min_element(newVector.begin() + 1, newVector.end()));
+}
+
+void Span::fillVectorNumber(unsigned int n) {
+	for (unsigned int i = 1; i <= n; i++)
+		addNumber(i);
 }

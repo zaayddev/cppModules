@@ -1,3 +1,10 @@
+            /*:::      ::::::::
+             :+:      :+:    :+:
+           +:+ +:+         +:+
+         +#+  +:+       +#+ 
+       +#+#+#+#+#+   +#+
+          #+#    #+#      
+         ###   ########  zchbani*/
 #pragma once
 
 #include <iostream>
@@ -18,8 +25,7 @@ class	MutantStack : public std::stack<T, Container>
 			return (*this);
 		}
 
-		typedef typename Container::iterator	iterator;
-
+		typedef typename Container::iterator			iterator;
 		iterator	begin(void) {
 			return (this->c.begin());
 		}

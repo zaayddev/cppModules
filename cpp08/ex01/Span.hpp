@@ -1,3 +1,10 @@
+            /*:::      ::::::::
+             :+:      :+:    :+:
+           +:+ +:+         +:+
+         +#+  +:+       +#+ 
+       +#+#+#+#+#+   +#+
+          #+#    #+#      
+         ###   ########  zchbani*/
 #pragma once
 
 #include <string>
@@ -22,6 +29,8 @@ class Span
         void    		addNumber(int n);
 		unsigned int	shortestSpan(void);
 		unsigned int	longestSpan(void);
+        void            fillVectorNumber(unsigned int n);
+    	void 			print();
 
         class	VectorFullException : public std::exception
 		{
