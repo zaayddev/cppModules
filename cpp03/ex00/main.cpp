@@ -12,7 +12,7 @@ int	main() {
 	}
 	std::cout << std::endl;
 	{
-		ClapTrap	killer("Zodiac");
+		ClapTrap	killer;
 
 		std::cout << killer << std::endl;
 		killer.attack("Jeffrey Dahmer");
